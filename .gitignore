@@ -47,3 +47,8 @@ backend/uploads/*
 backend/app/ai/weights/*.pt
 backend/app/ai/weights/*.onnx
 !backend/app/ai/weights/.gitkeep
+
+# TypeScript / Vite generated files
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
