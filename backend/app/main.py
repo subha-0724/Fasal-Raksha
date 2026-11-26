@@ -3,8 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import get_settings
 from app import __version__
-
-
+from app.routes.auth import router as auth_router
+from app.routes.users import router as users_router
+from app.routes.incidents import router as incidents_router
 settings = get_settings()
 
 app = FastAPI(
@@ -17,13 +18,15 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=settings.cors_origins_list,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
+app.include_router(auth_router, prefix=settings.API_V1_PREFIX)
+app.include_router(users_router, prefix=settings.API_V1_PREFIX)
+app.include_router(incidents_router, prefix=settings.API_V1_PREFIX)
 @app.get("/")
 def root():
     return {
