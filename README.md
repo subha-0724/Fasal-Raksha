@@ -18,4 +18,4 @@ Enable farmers to instantly report crop damage, wildlife encounters, and propert
 
 **Real-time:** Socket.IO
 
-## 📁 Folder Structure
+
